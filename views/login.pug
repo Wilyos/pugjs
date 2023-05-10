@@ -1,0 +1,10 @@
+extends layout 
+
+block content 
+    div(class='container')
+        form( metod='post', action='/login') 
+            label Usuario 
+            input(type='text', name='username', placeholder='Usuario', class='form-control')
+            label Contraseña
+            input(type='text', name='password', placeholder='Contraseña', class='form-control')
+            input(type='submit', name='Login',class='btn btn-primary', value='Ingresar')
