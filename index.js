@@ -18,7 +18,7 @@ port = process.env.PORT || 3000;
 
 //array
 
-let users = [ { username: 'vt', password: '123' }, { username: 'admin', password: 'admin' } ];
+let users = [ { username: 'vt', password: '123', name:'cecilio' }, { username: 'admin', password: 'admin', name:'armando' } ];
 
 //routes
 
@@ -31,10 +31,11 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
+    //tomar info del formulario para el login
     let {username, password} = req.body;
     let user = users.find(user =>user.username === username && user.password === password);
-    if (username != undefined || password!== undefined) {
-            res.redirect('/');
+    if (user !== undefined) {
+            res.render('profile', {name: user.name});
         } else {
             res.redirect('/login');
         }
